@@ -34,7 +34,7 @@ public class Menu {
 			System.out.println("*****************************************************");
 			System.out.println("Entre com a opção desejada:                          ");
 			System.out.println("                                                     "+ Cores.TEXT_RESET);
-
+			System.out.println();
 			opcao = leia.nextInt();
 
 			if (opcao == 9) {
