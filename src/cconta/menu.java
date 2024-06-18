@@ -1,21 +1,31 @@
 package cconta;
 
 import java.util.Scanner;
+import java.io.IOException;
+import java.util.InputMismatchException;
+
+import cconta.model.ContaCorrente;
+import cconta.model.ContaPoupanca;
 import cconta.util.cores;
-import cconta.model.Conta;
 
 public class menu {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stubs
 		
-		Conta c1 = new Conta(1403, 1996, 1, "Victoria", 1000098.0f);
-		c1.visualizar();
-		c1.sacar(12000.0f);
-		c1.visualizar();
-		c1.depositar(5000.0f);
-		c1.visualizar();
+		ContaCorrente cc1 = new ContaCorrente(1304, 1995 , 5, "Antonio", 1000.0f);
+		cc1.visualizar();
+		cc1.sacar(12000.0f);
+		cc1.visualizar();
+		cc1.depositar(5000.0f);
+		cc1.visualizar();
 		
+		ContaPoupanca cp1 = new ContaPoupanca(1989, 179, 2, "Alessandra", 100000.0f, 15);
+		cp1.visualizar();
+        cp1.sacar(1000.0f);
+		cp1.visualizar();
+		cp1.depositar(5000.0f);
+		cp1.visualizar();
 		Scanner leia = new Scanner(System.in);
 
 		int opcao;
@@ -42,9 +52,15 @@ public class menu {
 			System.out.println("*****************************************************");
 			System.out.println("Entre com a opção desejada:                          ");
 			System.out.println("                                                     "+ cores.TEXT_RESET);
-			System.out.println();
+			
+			try {
 			opcao = leia.nextInt();
+			}catch(InputMismatchException e) {
+System.out.println("\nDigite valores inteiros!");
+leia.nextLine();
+opcao=0;
 
+			}
 			if (opcao == 9) {
 				System.out.println(cores.TEXT_WHITE_BOLD + "\nBanco do Brazil com Z - O seu Futuro começa aqui!");
 				sobre();
@@ -100,6 +116,20 @@ public class menu {
 		System.out.println("paolavic014@outlook.com");
 		System.out.println("github.com/PaolaVic");
 		System.out.println("*********************************************************");
+		
+	}
+	
+	public static void keyPress() {
+		
+		try {
+			
+			System.out.println(cores.TEXT_RESET + "\n\nPressione Enter para Continuar...");
+			System.in.read();
+			
+		} catch (IOException e) {
+			
+			System.out.println("Você pressionou uma tecla diferente de enter");
+		}
 	}
 
 }
