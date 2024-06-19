@@ -13,6 +13,7 @@ public abstract class Conta {
 		this.tipo = tipo;
 		this.titular = titular;
 		this.saldo = saldo;
+		
 	}
 	public int getNumero() {
 		return numero;
@@ -51,28 +52,27 @@ public boolean sacar(float valor) {
 		System.out.println("\n Saldo Insuficiente!");
 		return false;
 	}
-	this.setSaldo(this.getSaldo() - valor);
-	return true;
+	setSaldo(getSaldo() - valor);
+    visualizar();
+    return true;
 }
 
 public void depositar(float valor) {
-
-	this.setSaldo(this.getSaldo() + valor);
-
+	setSaldo(getSaldo()+valor);
+    visualizar();
 }
-		
 		public void visualizar() {
 
-			String tipo = "";
-			
-			switch(this.tipo) {
-			case 1:
-				tipo = "Conta Corrente";
-			break;
-			case 2:
-				tipo = "Conta Poupança";
-			break;
-			}
+	        String tipo = "";
+
+	        switch(this.tipo) {
+	            case 1:
+	                tipo = "Conta Corrente";
+	                break;
+	            case 2:
+	                tipo = "Conta Poupança";
+	                break;
+	        }
 			
 			System.out.println("\n\n***********************************************************");
 			System.out.println("Dados da Conta:");
